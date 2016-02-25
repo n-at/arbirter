@@ -71,6 +71,12 @@ public class ReportRenderer {
                 option = pdfOption;
                 break;
 
+            case "doc":
+                option = new RenderOption();
+                option.setOutputFormat("doc");
+                reportExtension = "doc";
+                break;
+
             case "docx":
                 DocxRenderOption docxRenderOption = new DocxRenderOption();
                 docxRenderOption.setOutputFormat("docx");
@@ -103,6 +109,8 @@ public class ReportRenderer {
         switch(format.toLowerCase()) {
             case "pdf":
                 return reportId + "/report.pdf";
+            case "doc":
+                return reportId + "/report.doc";
             case "docx":
                 return reportId + "/report.docx";
             case "html":
