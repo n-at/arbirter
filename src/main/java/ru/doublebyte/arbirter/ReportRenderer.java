@@ -90,6 +90,12 @@ public class ReportRenderer {
                 option = docxRenderOption;
                 break;
 
+            case "xls":
+                option = new RenderOption();
+                option.setOutputFormat("xls");
+                reportExtension = "xls";
+                break;
+
             case "html":
             default:
                 HTMLRenderOption htmlOption = new HTMLRenderOption();
@@ -119,6 +125,8 @@ public class ReportRenderer {
                 return reportId + "/report.doc";
             case "docx":
                 return reportId + "/report.docx";
+            case "xls":
+                return reportId + "/report.xls";
             case "html":
             default:
                 return reportId + "/report.html";
