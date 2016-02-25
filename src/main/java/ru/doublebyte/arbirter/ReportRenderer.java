@@ -29,7 +29,9 @@ public class ReportRenderer {
         String reportId = UUID.randomUUID().toString();
         logger.info("Started report with id {}", reportId);
 
-        //TODO check request
+        if(request.getDesign() == null || request.getDesign().length() == 0) {
+            throw new Exception("Report design is null");
+        }
 
         IReportEngine reportEngine = engine.getReportEngine();
         InputStream reportText = new ByteArrayInputStream(request.getDesign().getBytes());
@@ -38,8 +40,12 @@ public class ReportRenderer {
             RenderOption renderOption = getFormatOption(reportId, request.getFormat());
             IReportRunnable design = reportEngine.openReportDesign(reportText);
             IRunAndRenderTask task = reportEngine.createRunAndRenderTask(design);
-            task.setParameterValues(request.getParams());
             task.setRenderOption(renderOption);
+
+            if(request.getParams() != null) {
+                task.setParameterValues(request.getParams());
+            }
+
             task.run();
             task.close();
             logger.info("Finished report with id {}", reportId);
