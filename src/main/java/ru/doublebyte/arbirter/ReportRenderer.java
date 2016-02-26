@@ -96,6 +96,24 @@ public class ReportRenderer {
                 reportExtension = "xls";
                 break;
 
+            case "ppt":
+                option = new RenderOption();
+                option.setOutputFormat("ppt");
+                reportExtension = "ppt";
+                break;
+
+            case "pptx":
+                option = new RenderOption();
+                option.setOutputFormat("pptx");
+                reportExtension = "pptx";
+                break;
+
+            case "postscript":
+                option = new RenderOption();
+                option.setOutputFormat("postscript");
+                reportExtension = "ps";
+                break;
+
             case "html":
             default:
                 HTMLRenderOption htmlOption = new HTMLRenderOption();
@@ -127,6 +145,12 @@ public class ReportRenderer {
                 return reportId + "/report.docx";
             case "xls":
                 return reportId + "/report.xls";
+            case "ppt":
+                return reportId + "/report.ppt";
+            case "pptx":
+                return reportId + "/report.pptx";
+            case "postscript":
+                return reportId + "/report.ps";
             case "html":
             default:
                 return reportId + "/report.html";
