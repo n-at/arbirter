@@ -7,9 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.doublebyte.arbirter.types.RenderRequest;
 
+import javax.annotation.PostConstruct;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 @Component
@@ -19,6 +22,23 @@ public class ReportRenderer {
 
     @Autowired
     private BirtEngine engine;
+
+    private Map<String, String> supportedFormats = new HashMap<>();
+
+    @PostConstruct
+    private void fillSupportedFormats() {
+        supportedFormats.put("pdf", "pdf");
+        supportedFormats.put("odt", "odt");
+        supportedFormats.put("ods", "ods");
+        supportedFormats.put("odp", "odp");
+        supportedFormats.put("xls", "xls");
+        supportedFormats.put("doc", "doc");
+        supportedFormats.put("docx", "docx");
+        supportedFormats.put("ppt", "ppt");
+        supportedFormats.put("pptx", "pptx");
+        supportedFormats.put("html", "html");
+        supportedFormats.put("postscript", "ps");
+    }
 
     /**
      * Render report and return it's id
@@ -77,11 +97,6 @@ public class ReportRenderer {
                 option = pdfOption;
                 break;
 
-            case "doc":
-                option = new RenderOption();
-                option.setOutputFormat("doc");
-                break;
-
             case "docx":
                 DocxRenderOption docxRenderOption = new DocxRenderOption();
                 docxRenderOption.setOutputFormat("docx");
@@ -94,34 +109,15 @@ public class ReportRenderer {
                 option = excelOption;
                 break;
 
+            case "odt":
+            case "ods":
+            case "odp":
+            case "doc":
             case "ppt":
-                option = new RenderOption();
-                option.setOutputFormat("ppt");
-                break;
-
             case "pptx":
-                option = new RenderOption();
-                option.setOutputFormat("pptx");
-                break;
-
             case "postscript":
                 option = new RenderOption();
-                option.setOutputFormat("postscript");
-                break;
-
-            case "odt":
-                option = new RenderOption();
-                option.setOutputFormat("odt");
-                break;
-
-            case "ods":
-                option = new RenderOption();
-                option.setOutputFormat("ods");
-                break;
-
-            case "odp":
-                option = new RenderOption();
-                option.setOutputFormat("odp");
+                option.setOutputFormat(format.toLowerCase());
                 break;
 
             case "html":
@@ -155,31 +151,11 @@ public class ReportRenderer {
      * @return File extension
      */
     private String getFileExtensionByFormat(String format) {
-        switch(format.toLowerCase()) {
-            case "pdf":
-                return "pdf";
-            case "doc":
-                return "doc";
-            case "docx":
-                return "docx";
-            case "xls":
-                return "xls";
-            case "ppt":
-                return "ppt";
-            case "pptx":
-                return "pptx";
-            case "postscript":
-                return "ps";
-            case "odt":
-                return "odt";
-            case "ods":
-                return "ods";
-            case "odp":
-                return "odp";
-            case "html":
-            default:
-                return "html";
+        String formatLower = format.toLowerCase();
+        if(supportedFormats.containsKey(formatLower)) {
+            return supportedFormats.get(formatLower);
         }
+        return "html";
     }
 
     public void setEngine(BirtEngine engine) {
