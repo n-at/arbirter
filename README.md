@@ -37,6 +37,8 @@ Response will contain url of generated report:
         "url": "f4156008-a32f-44ab-b52a-9cb908ab048a/report.html"
     }
 
+arbirter is bundled with PostgreSQL, MySQL and Firebird JDBC drivers.
+
 License
 -------
 

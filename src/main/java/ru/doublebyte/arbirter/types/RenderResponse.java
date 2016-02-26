@@ -19,7 +19,7 @@ public class RenderResponse {
     }
 
     public String toString() {
-        return String.format("RenderResponse[success=%b, message=%s, url=%s",
+        return String.format("RenderResponse[success=%b, message=%s, url=%s]",
                 success, message, url);
     }
 
