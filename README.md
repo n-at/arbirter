@@ -29,7 +29,8 @@ Send POST request to `/` with JSON:
         "params": {...}
     }
 
-* `format` can be one of: `html, pdf, doc, docx, xls, ppt, pptx, postscript`.
+* `format` can be one of: `html, pdf, doc, docx, xls, ppt, pptx,
+odt, ods, odt, postscript`.
 * `design` is BIRT .rptdesign file contents.
 * `params` may contain report parameters.
 

@@ -109,6 +109,21 @@ public class ReportRenderer {
                 option.setOutputFormat("postscript");
                 break;
 
+            case "odt":
+                option = new RenderOption();
+                option.setOutputFormat("odt");
+                break;
+
+            case "ods":
+                option = new RenderOption();
+                option.setOutputFormat("ods");
+                break;
+
+            case "odp":
+                option = new RenderOption();
+                option.setOutputFormat("odp");
+                break;
+
             case "html":
             default:
                 HTMLRenderOption htmlOption = new HTMLRenderOption();
@@ -155,6 +170,12 @@ public class ReportRenderer {
                 return "pptx";
             case "postscript":
                 return "ps";
+            case "odt":
+                return "odt";
+            case "ods":
+                return "ods";
+            case "odp":
+                return "odp";
             case "html":
             default:
                 return "html";
