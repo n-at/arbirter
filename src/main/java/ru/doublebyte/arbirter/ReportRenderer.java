@@ -66,52 +66,44 @@ public class ReportRenderer {
     private RenderOption getFormatOption(String reportId, String format) {
         String outputPath = Paths.get("public", reportId).toString();
 
-        String reportExtension;
         RenderOption option;
 
         switch(format.toLowerCase()) {
             case "pdf":
                 PDFRenderOption pdfOption = new PDFRenderOption();
                 pdfOption.setOutputFormat("pdf");
-                reportExtension = "pdf";
                 option = pdfOption;
                 break;
 
             case "doc":
                 option = new RenderOption();
                 option.setOutputFormat("doc");
-                reportExtension = "doc";
                 break;
 
             case "docx":
                 DocxRenderOption docxRenderOption = new DocxRenderOption();
                 docxRenderOption.setOutputFormat("docx");
-                reportExtension = "docx";
                 option = docxRenderOption;
                 break;
 
             case "xls":
                 option = new RenderOption();
                 option.setOutputFormat("xls");
-                reportExtension = "xls";
                 break;
 
             case "ppt":
                 option = new RenderOption();
                 option.setOutputFormat("ppt");
-                reportExtension = "ppt";
                 break;
 
             case "pptx":
                 option = new RenderOption();
                 option.setOutputFormat("pptx");
-                reportExtension = "pptx";
                 break;
 
             case "postscript":
                 option = new RenderOption();
                 option.setOutputFormat("postscript");
-                reportExtension = "ps";
                 break;
 
             case "html":
@@ -120,11 +112,11 @@ public class ReportRenderer {
                 htmlOption.setOutputFormat("html");
                 htmlOption.setBaseImageURL(reportId);
                 htmlOption.setImageDirectory(outputPath);
-                reportExtension = "html";
                 option = htmlOption;
         }
 
-        option.setOutputFileName(Paths.get(outputPath, "report." + reportExtension).toString());
+        String fileName = "report." + getFileExtensionByFormat(format);
+        option.setOutputFileName(Paths.get(outputPath, fileName).toString());
 
         return option;
     }
@@ -136,24 +128,33 @@ public class ReportRenderer {
      * @return Report url
      */
     private String getReportUrl(String reportId, String format) {
+        return reportId + "/report." + getFileExtensionByFormat(format);
+    }
+
+    /**
+     * Get report file extension by report desired format
+     * @param format Report format
+     * @return File extension
+     */
+    private String getFileExtensionByFormat(String format) {
         switch(format.toLowerCase()) {
             case "pdf":
-                return reportId + "/report.pdf";
+                return "pdf";
             case "doc":
-                return reportId + "/report.doc";
+                return "doc";
             case "docx":
-                return reportId + "/report.docx";
+                return "docx";
             case "xls":
-                return reportId + "/report.xls";
+                return "xls";
             case "ppt":
-                return reportId + "/report.ppt";
+                return "ppt";
             case "pptx":
-                return reportId + "/report.pptx";
+                return "pptx";
             case "postscript":
-                return reportId + "/report.ps";
+                return "ps";
             case "html":
             default:
-                return reportId + "/report.html";
+                return "html";
         }
     }
 
