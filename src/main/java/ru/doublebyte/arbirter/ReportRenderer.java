@@ -30,7 +30,7 @@ public class ReportRenderer {
         logger.info("Started report with id {}", reportId);
 
         if(request.getDesign() == null || request.getDesign().length() == 0) {
-            throw new Exception("Report design is null");
+            throw new Exception("Report design is empty");
         }
 
         IReportEngine reportEngine = engine.getReportEngine();
@@ -89,8 +89,9 @@ public class ReportRenderer {
                 break;
 
             case "xls":
-                option = new RenderOption();
-                option.setOutputFormat("xls");
+                EXCELRenderOption excelOption = new EXCELRenderOption();
+                excelOption.setOutputFormat("xls");
+                option = excelOption;
                 break;
 
             case "ppt":

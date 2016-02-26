@@ -3,12 +3,12 @@ package ru.doublebyte.arbirter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.web.bind.annotation.*;
 import ru.doublebyte.arbirter.types.RenderRequest;
 import ru.doublebyte.arbirter.types.RenderResponse;
+
+import javax.servlet.http.HttpServletResponse;
 
 @RestController
 public class IndexController {
@@ -31,6 +31,18 @@ public class IndexController {
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public String help() {
         return "Only POST allowed.";
+    }
+
+    @ExceptionHandler({HttpMessageNotReadableException.class})
+    public RenderResponse syntaxErrorHandler(HttpMessageNotReadableException e) {
+        logger.error("Request syntax error", e);
+        return new RenderResponse(false, "Request syntax error: " + e.getMessage(), "");
+    }
+
+    @ExceptionHandler({Exception.class})
+    public RenderResponse defaultErrorHandler(Exception e) {
+        logger.error("Application error", e);
+        return new RenderResponse(false, "Application error: " + e.getMessage(), "");
     }
 
     public void setReportRenderer(ReportRenderer reportRenderer) {
