@@ -54,6 +54,8 @@ public class ReportRenderer {
             throw new Exception("Report rendering error");
         }
 
+        reportText.close();
+
         return getReportUrl(reportId, request.getFormat());
     }
 
