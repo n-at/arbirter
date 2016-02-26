@@ -112,7 +112,7 @@ public class ReportRenderer {
             default:
                 HTMLRenderOption htmlOption = new HTMLRenderOption();
                 htmlOption.setOutputFormat("html");
-                htmlOption.setImageDirectory(".");
+                htmlOption.setImageDirectory("img");
                 htmlOption.setImageHandler(new HTMLCompleteImageHandler());
                 option = htmlOption;
         }
