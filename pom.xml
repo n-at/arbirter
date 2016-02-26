@@ -22,6 +22,10 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
@@ -30,14 +34,6 @@
             <artifactId>org.eclipse.birt.runtime</artifactId>
             <version>4.4.2</version>
         </dependency>
-
-        <!-- Conflicts with Spring Boot (contains an old mongodb library) -->
-        <dependency>
-            <groupId>org.eclipse.birt.runtime</groupId>
-            <artifactId>org.eclipse.orbit.mongodb</artifactId>
-            <version>2.10.1.v20130422-1135</version>
-            <scope>provided</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -45,14 +41,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.eclipse.birt.runtime</groupId>
-                            <artifactId>org.eclipse.orbit.mongodb</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
             </plugin>
         </plugins>
     </build>
