@@ -8,6 +8,10 @@ Java 8 and maven 3 are required. Build with command:
 
     mvn clean package
 
+Build docker image:
+
+    mvn clean package docker:build
+
 Running
 -------
 
@@ -15,9 +19,9 @@ Run from `target`:
 
     java -jar arbirter.jar
 
-Bu default arbirter uses port `8080`.
+By default arbirter uses port `8080`.
 
-Send POST request to / with JSON:
+Send POST request to `/` with JSON:
 
     {
         "format": "html",
