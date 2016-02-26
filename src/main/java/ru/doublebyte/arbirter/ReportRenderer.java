@@ -112,8 +112,8 @@ public class ReportRenderer {
             default:
                 HTMLRenderOption htmlOption = new HTMLRenderOption();
                 htmlOption.setOutputFormat("html");
-                htmlOption.setBaseImageURL(reportId);
-                htmlOption.setImageDirectory(outputPath);
+                htmlOption.setImageDirectory(".");
+                htmlOption.setImageHandler(new HTMLCompleteImageHandler());
                 option = htmlOption;
         }
 
