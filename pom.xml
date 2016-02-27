@@ -54,6 +54,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <finalName>${project.artifactId}</finalName>
+                </configuration>
             </plugin>
 
             <plugin>
@@ -67,7 +70,7 @@
                         <resource>
                             <targetPath>/</targetPath>
                             <directory>${project.build.directory}</directory>
-                            <include>${project.build.finalName}.jar</include>
+                            <include>${project.artifactId}.jar</include>
                         </resource>
                     </resources>
                 </configuration>
