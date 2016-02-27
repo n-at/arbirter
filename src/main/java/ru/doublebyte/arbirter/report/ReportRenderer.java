@@ -1,4 +1,4 @@
-package ru.doublebyte.arbirter;
+package ru.doublebyte.arbirter.report;
 
 import org.eclipse.birt.report.engine.api.*;
 import org.slf4j.Logger;
@@ -83,7 +83,7 @@ public class ReportRenderer {
      * Report format description
      * @param reportId Report id
      * @param format String format name
-     * @return BIRT engine format description
+     * @return BIRT report format description
      */
     private RenderOption getFormatOption(String reportId, String format) {
         String outputPath = Paths.get("public", reportId).toString();

@@ -1,4 +1,4 @@
-package ru.doublebyte.arbirter;
+package ru.doublebyte.arbirter.report;
 
 import org.eclipse.birt.core.framework.Platform;
 import org.eclipse.birt.report.engine.api.EngineConfig;

@@ -1,14 +1,13 @@
-package ru.doublebyte.arbirter;
+package ru.doublebyte.arbirter.controllers;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.*;
+import ru.doublebyte.arbirter.report.ReportRenderer;
 import ru.doublebyte.arbirter.types.RenderRequest;
 import ru.doublebyte.arbirter.types.RenderResponse;
-
-import javax.servlet.http.HttpServletResponse;
 
 @RestController
 public class IndexController {
