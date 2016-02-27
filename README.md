@@ -21,7 +21,7 @@ Run from `target`:
 
 By default arbirter uses port `8080`.
 
-Send POST request to `/` with JSON:
+Send POST request to `/render` with JSON:
 
     {
         "format": "html",

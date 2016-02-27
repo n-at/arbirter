@@ -18,7 +18,7 @@ public class IndexController {
     @Autowired
     private ReportRenderer reportRenderer;
 
-    @RequestMapping(path = "/", method = RequestMethod.POST)
+    @RequestMapping(path = "/render", method = RequestMethod.POST)
     public RenderResponse index(@RequestBody RenderRequest request) {
         try {
             String reportUrl = reportRenderer.render(request);
@@ -26,11 +26,6 @@ public class IndexController {
         } catch(Exception e) {
             return new RenderResponse(false, e.getMessage(), "");
         }
-    }
-
-    @RequestMapping(path = "/", method = RequestMethod.GET)
-    public String help() {
-        return "Only POST allowed.";
     }
 
     @ExceptionHandler({HttpMessageNotReadableException.class})
