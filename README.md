@@ -30,7 +30,7 @@ Send POST request to `/render` with JSON:
     }
 
 * `format` can be one of: `html, pdf, doc, docx, xls, ppt, pptx,
-odt, ods, odt, postscript`.
+odt, ods, odp, postscript`.
 * `design` is BIRT .rptdesign file contents.
 * `params` may contain report parameters.
 
