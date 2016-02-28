@@ -44,6 +44,20 @@ Response will contain url of generated report:
 
 arbirter is bundled with PostgreSQL, MySQL and Firebird JDBC drivers.
 
+Docker
+------
+
+Docker image is available at [docker hub](https://hub.docker.com/r/atnurgaliev/arbirter/).
+
+Start a container:
+
+    docker run -d \
+        -p 8080:8080 \
+        -v /opt/arbirter/public:/app/public \
+        -v /opt/arbirter/logs:/app/logs \
+        --name arbirter \
+        atnurgaliev/arbirter
+
 License
 -------
 
