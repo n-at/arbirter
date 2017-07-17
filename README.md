@@ -4,13 +4,10 @@ arbirter - Alternative renderer of BIRT engine reports
 Building
 --------
 
-Java 8 and maven 3 are required. Build with command:
+Java 8 and maven 3 are required. 
+Build jar and docker image with command:
 
     mvn clean package
-
-Build docker image:
-
-    mvn clean package docker:build
 
 Running
 -------
