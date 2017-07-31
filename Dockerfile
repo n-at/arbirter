@@ -10,4 +10,4 @@ RUN mkdir -m 0777 public logs
 VOLUME ["/app/public", "/app/logs"]
 EXPOSE 8080
 
-CMD java -jar arbirter.jar
+CMD java ${JAVA_OPTS} -jar arbirter.jar
